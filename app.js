@@ -29,8 +29,8 @@ app.get('/login',function(req,res){
   res.render('login',{
   });
 });
-app.get('/account',function(req,res){
-  res.render('account',{
+app.get('/orders',function(req,res){
+  res.render('orders',{
   });
 });
 
