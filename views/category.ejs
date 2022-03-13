@@ -12,12 +12,16 @@
             <div class="container" style="margin-left: 30px;">
                 <div class="row">
                     <div class="col-12" style="display: flex; margin-bottom: 30px; margin-left: 30px;">
-                            <img style="border-radius: 10%;" src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg" width="200px" height="200px">
-                            <img style="margin-left: 30px; border-radius: 10%;" src="/Pictures/category/appetizer/salad-cate.jpg" width="200px" height="200px">
+                        <img onclick="openNav(1)" style="border-radius: 10%;" src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg"
+                            width="200px" height="200px">
+                        <img onclick="openNav(2)" style="margin-left: 30px; border-radius: 10%;"
+                            src="/Pictures/category/appetizer/salad-cate.jpg" width="200px" height="200px">
                     </div>
                     <div class="col-12" style="display: flex; margin-left: 30px;">
-                            <img style="border-radius: 10%;" src="/Pictures/category/drink/cola.jpg" width="200px" height="200px">
-                            <img style="margin-left: 30px; border-radius: 10%;" src="/Pictures/category/dessert/donut-duo.jpg" width="200px" height="200px">
+                        <img onclick="openNav(3)" style="border-radius: 10%;" src="/Pictures/category/drink/cola.jpg" width="200px"
+                            height="200px">
+                        <img onclick="openNav(4)" style="margin-left: 30px; border-radius: 10%;"
+                            src="/Pictures/category/dessert/donut-duo.jpg" width="200px" height="200px">
                     </div>
                 </div>
             </div>
@@ -37,5 +41,139 @@
                 <button class="button button4">SUBMIT</button>
             </div>
         </div>
+        </div>
 
-<%- include('partials/footer'); %>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav(1)">&times;</a>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Seafood-cocktail pizza<br> 199฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/main-dish/meat-deluxe-pizza.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Meat-deluxe pizza<br> 199฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/main-dish/double-cheese-pizza.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Double-cheese pizza<br> 199฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/main-dish/drunken-spaghetti.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Drunken-spaghetti<br> 129฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/main-dish/drunken-spaghetti.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Drunken-spaghetti<br> 129฿</p>
+            </div>
+        </div>
+
+        <div id="mySidenav2" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav(2)">&times;</a>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/appetizer/bread-stick.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Bread-stick<br> 89฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/appetizer/chicken-pop.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Chicken-pop<br> 89฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/appetizer/fish-donut.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Fish-donut<br> 89฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/appetizer/garlic-bread.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Garlic-bread<br> 89฿</p>
+            </div>
+            <div style="display: flex;">
+                <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/appetizer/salad.jpg" width="120px" height="120px">
+                <p style="color: white; padding-top: 10%; padding-left: 2%;">Salad<br> 119฿</p>
+            </div>
+
+            <div id="mySidenav3" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav(3)">&times;</a>
+                <div style="display: flex;">
+                    <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/drink/drinking-water.jpg" width="120px" height="120px">
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Glass-of-water<br> 19฿</p>
+                </div>
+                <div style="display: flex;">
+                    <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/drink/cola.jpg" width="120px" height="120px">
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Cola<br> 29฿</p>
+                </div>
+                <div style="display: flex;">
+                    <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/drink/lemon-tea.jpg" width="120px" height="120px">
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Lemon-tea<br> 49฿</p>
+                </div>
+                <div style="display: flex;">
+                    <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/drink/beer.jpg" width="120px" height="120px">
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Beer<br> 79฿</p>
+                </div>
+
+                <div id="mySidenav4" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav(4)">&times;</a>
+                    <div style="display: flex;">
+                        <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/dessert/donut.jpg" width="120px" height="120px">
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Donut<br> 39฿</p>
+                    </div>
+                    <div style="display: flex;">
+                        <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/dessert/croissant.jpeg" width="120px" height="120px">
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Croissant<br> 89฿</p>
+                    </div>
+                    <div style="display: flex;">
+                        <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/dessert/chocolate-roll.jpeg" width="120px" height="120px">
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Chocolate-roll<br> 109฿</p>
+                    </div>
+                    <div style="display: flex;">
+                        <img style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" src="/Pictures/category/dessert/chocolate-muffin.jpg" width="120px" height="120px">
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Chocolate-muffin<br> 99฿</p>
+                    </div>
+        </div>
+
+        <!-- Use any element to open the sidenav -->
+        <span onclick="openNav()">open</span>
+
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <div id="main">
+            ...
+        </div>
+        </center>
+        </section>
+        </div>
+        <script>
+            /* Set the width of the side navigation to 250px */
+            function openNav(num) {
+                if(num==1){
+                    document.getElementById("mySidenav").style.width = "600px";
+                }
+                else if(num==2){
+                    document.getElementById("mySidenav2").style.width = "600px";
+                }
+                else if(num==3){
+                    document.getElementById("mySidenav3").style.width = "600px";
+                }
+                else if(num==4){
+                    document.getElementById("mySidenav4").style.width = "600px";
+                }
+                
+            }
+            
+
+            /* Set the width of the side navigation to 0 */
+            function closeNav(num) {
+                if(num==1){
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+                else if(num==2){
+                    document.getElementById("mySidenav2").style.width = "0";
+                }
+                else if(num==3){
+                    document.getElementById("mySidenav3").style.width = "0";
+                }
+                else if(num==4){
+                    document.getElementById("mySidenav4").style.width = "0";
+                }
+            }
+        </script>
+
+        <%- include('partials/footer'); %>
