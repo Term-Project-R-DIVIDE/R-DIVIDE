@@ -3,34 +3,39 @@
     <body>
 
         <div class="split left">
-            <div class="ltext">
+            <div class="container" style="margin-left: 30px; color: white;">
+                <div>
+                    <h1>Category</h1>
+                </div>
 
-                <h1>Category</h1><br><br>
-                <img src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg"><br><br><br><br><br>
-                <img src="/Pictures/category/drink/cola.jpg">
             </div>
-            <div class="lltext">
-                <img src="/Pictures/category/appetizer/salad.jpg"><br><br><br><br><br>
-                <img src="/Pictures/category/dessert/donut-duo.jpg">
+            <div class="container" style="margin-left: 30px;">
+                <div class="row">
+                    <div class="col-12" style="display: flex; margin-bottom: 30px; margin-left: 30px;">
+                            <img style="border-radius: 10%;" src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg" width="200px" height="200px">
+                            <img style="margin-left: 30px; border-radius: 10%;" src="/Pictures/category/appetizer/salad-cate.jpg" width="200px" height="200px">
+                    </div>
+                    <div class="col-12" style="display: flex; margin-left: 30px;">
+                            <img style="border-radius: 10%;" src="/Pictures/category/drink/cola.jpg" width="200px" height="200px">
+                            <img style="margin-left: 30px; border-radius: 10%;" src="/Pictures/category/dessert/donut-duo.jpg" width="200px" height="200px">
+                    </div>
+                </div>
             </div>
         </div>
 
 
         <div class="split right">
             <div class="rtext">
-          
+
                 <h1>Orders</h1><br><br>
-                
-              </div>
-              <div class="note">
-                
-                <h3 >Note.</h3><br>
-                <input type="text" ><br>
+
+            </div>
+            <div class="note">
+
+                <h3>Note.</h3><br>
+                <input type="text"><br>
                 <button class="button button4">SUBMIT</button>
-              </div>
+            </div>
         </div>
 
-
-    </body>
-
-    </html>
+<%- include('partials/footer'); %>
