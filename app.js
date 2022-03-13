@@ -21,6 +21,18 @@ app.get('/category',function(req,res){
   res.render('category',{
   });
 });
+app.get('/checkout',function(req,res){
+  res.render('checkout',{
+  });
+});
+app.get('/login',function(req,res){
+  res.render('login',{
+  });
+});
+app.get('/orders',function(req,res){
+  res.render('orders',{
+  });
+});
 
 
 app.listen(3000, function() {
