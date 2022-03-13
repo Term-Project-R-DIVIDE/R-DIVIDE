@@ -210,7 +210,7 @@ nav .content .links{
   font-size: 17px;
   color: #fff;
   background: #171c24;
-  padding: 0 100px 0 15px;
+  padding: 0 100px 0 10px;
 }
 .search-box input::placeholder{
   color: #f2f2f2;
