@@ -13,11 +13,12 @@
         </div>
         <p class='msg'>SIGN IN</p><br><br>
         <div class='form'>
-          <form>
-            <input type="text" placeholder='E-mail' class='text' id='username' required><br><br>
-            <input type="password" placeholder='   Password' class='password'><br><br><br><br><br>
-            <a href="orders" class='btn-login' id='do-login'>SUBMIT</a>
-            
+          <form action="/login" method="post">
+            <input type="text" placeholder='E-mail' class='text' id='username' name='username' required><br><br>
+            <input type="password" placeholder='   Password' class='password' name='password'
+              required><br><br><br><br><br>
+            <button class='btn-login' id='do-login' type='submit'>SUBMIT</button>
+
           </form>
         </div>
       </center>
@@ -25,6 +26,12 @@
 
 
     <!-- partial -->
-    <script src="js/script.js"></script>
+    <script>
+
+      var error = <%- error %>;
+      if (error) {
+        alert('Please try again ')
+      }
+    </script>
 
   </body>
