@@ -1,6 +1,6 @@
 version: '3.3'
 services:
   project:
-    image: padungkiat/project-final:latest
+    image: padungkiat/project-final2:latest
     ports:
       - "8090:3000"
