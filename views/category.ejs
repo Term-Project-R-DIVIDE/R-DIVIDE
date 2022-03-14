@@ -31,150 +31,205 @@
 
         <div class="split right">
             <div class="rtext">
-                <h1>Orders table # <%= tableNumber %> </h1>
+                <div class="container">
+                    <br><br><br><br><br><br><br><br><br><br><br><h1>Orders table # <%= tableNumber %></h1>
+                </div><br><br>
+                <div class="container">
+                <% for(var i=1; i < orderLists.length ; i++) { %>
+                    <p>
+                        <%= orderLists[i].name %> price : <%= orderLists[i].prize %> Baht.
+                    </p>
+                    <p>
+                        <%= orderLists[i].request %>
+                    </p>
+                    <p> Status : <%= orderLists[i].status %>
+                    </p>
+                    <form action="/cancel" method="post">
+                        <button type="submit" name='cancelOrder'
+                            value="<%= orderLists[i].name %>">cancel</button>
+                    </form>
+                    <% } %>
+                    <h1> Total price : <%= totalP %>
+                    </h1>
 
-
+                    <form action="/confirm" method="post">
+                        <button type="submit" name='confirmOrder'
+                            value="<%= orderLists.name %>">confirm</button>
+                    </form>
+                    
+                    
+                </div>
             </div>
             <div class="note">
-
+                <br><br><br><br><br><br><br><br><br><br><br>
                 <h3>Note.</h3><br>
                 <input type="text"><br>
-                <button class="button button4">SUBMIT</button>
+                <form action="/checkbill" method="post">
+                <button class="button button4">Checkbill</button></form>
             </div>
+            
         </div>
         </div>
 
         <section id="main-dish">
-            
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav(1)">&times;</a>
-                    <div style="display: flex;">
-                        <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                            <img src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg" width="120px" height="120px" style="border-radius: 10%;">
-                        </button>
-                            <p style="color: white; padding-top: 10%; padding-left: 2%;">Seafood-cocktail pizza<br> 199฿</p>
-                    </div>
-                    <div style="display: flex;">
-                        <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                            <img src="/Pictures/category/main-dish/meat-deluxe-pizza.jpg" width="120px" height="120px" style="border-radius: 10%;">
-                        </button>
-                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Meat-deluxe pizza<br> 199฿</p>
-                    </div>
-                    <div style="display: flex;">
-                        <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                            <img src="/Pictures/category/main-dish/double-cheese-pizza.jpg" width="120px" height="120px" style="border-radius: 10%;">
-                        </button>
-                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Double-cheese pizza<br> 199฿</p>
-                    </div>
-                    <div style="display: flex;">
-                        <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                            <img src="/Pictures/category/main-dish/drunken-spaghetti.jpg" width="120px" height="120px" style="border-radius: 10%;">
-                        </button>
-                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Drunken-spaghetti<br> 129฿</p>
-                    </div>
-                    <div style="display: flex;">
-                        <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                            <img src="/Pictures/category/main-dish/sausage-spaghetti.jpg" width="120px" height="120px" style="border-radius: 10%;">
-                        </button>
-                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Sausage-spaghetti-spaghetti<br>
-                            129฿</p>
-                    </div>
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav(1)">&times;</a>
+                <form action="/maindish" method="post">
+                <div style="display: flex;">
+                    <button  type="submit" name="menuID" value='seafood-cocktail-pizza' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
+                    </button>
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Seafood-cocktail pizza<br> 199฿</p>
                 </div>
+                <div style="display: flex;">
+                    <button onclick="" type="submit" name="menuID" value='meat-deluxe-pizza' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/main-dish/meat-deluxe-pizza.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
+                    </button>
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Meat-deluxe pizza<br> 199฿</p>
+                </div>
+                <div style="display: flex;">
+                    <button onclick="" type="submit" name="menuID" value='double-cheese-pizza' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/main-dish/double-cheese-pizza.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
+                    </button>
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Double-cheese pizza<br> 199฿</p>
+                </div>
+                <div style="display: flex;">
+                    <button onclick="" type="submit" name="menuID" value='drunken-spaghetti' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/main-dish/drunken-spaghetti.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
+                    </button>
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Drunken-spaghetti<br> 129฿</p>
+                </div>
+                <div style="display: flex;">
+                    <button onclick="" type="submit" name="menuID" value='sausage-spaghetti' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/main-dish/sausage-spaghetti.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
+                    </button>
+                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Sausage-spaghetti-spaghetti<br>
+                        129฿</p>
+                </div>
+            </form>
+            </div>
         </section>
 
         <section id="appetizer">
             <div id="mySidenav2" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav(2)">&times;</a>
+                <form action="/appetizer" method="post">
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/appetizer/bread-stick.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='bread-stick' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/appetizer/bread-stick.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Bread-stick<br> 89฿</p>
                 </div>
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/appetizer/chicken-pop.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='chicken-pop' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/appetizer/chicken-pop.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Chicken-pop<br> 89฿</p>
                 </div>
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/appetizer/fish-donut.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='fish-donut' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/appetizer/fish-donut.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Fish-donut<br> 89฿</p>
                 </div>
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/appetizer/garlic-bread.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='garlic-bread' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/appetizer/garlic-bread.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Garlic-bread<br> 89฿</p>
                 </div>
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/appetizer/salad.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='salad' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/appetizer/salad.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Salad<br> 119฿</p>
                 </div>
+            </form>
             </div>
         </section>
 
         <section id="drink">
             <div id="mySidenav3" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav(3)">&times;</a>
+                <form action="/drinks" method="post">
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/drink/drinking-water.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='water' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/drink/drinking-water.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Glass-of-water<br> 19฿</p>
                 </div>
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/drink/cola.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='cola' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/drink/cola.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Cola<br> 29฿</p>
                 </div>
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/drink/lemon-tea.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='lemon-tea' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/drink/lemon-tea.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Lemon-tea<br> 49฿</p>
                 </div>
                 <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/drink/beer.jpg" width="120px" height="120px" style="border-radius: 10%;">
+                    <button onclick="" type="submit" name="menuID" value='beer' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                        <img src="/Pictures/category/drink/beer.jpg" width="120px" height="120px"
+                            style="border-radius: 10%;">
                     </button>
                     <p style="color: white; padding-top: 10%; padding-left: 2%;">Beer<br> 79฿</p>
                 </div>
+            </form>
             </div>
         </section>
 
         <section id="dessert">
             <div id="mySidenav4" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav(4)">&times;</a>
-                <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/dessert/donut.jpg" width="120px" height="120px" style="border-radius: 10%;">
-                    </button>
-                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Donut<br> 39฿</p>
-                </div>
-                <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/dessert/croissant.jpeg" width="120px" height="120px" style="border-radius: 10%;">
-                    </button>
-                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Croissant<br> 89฿</p>
-                </div>
-                <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/dessert/chocolate-roll.jpeg" width="120px" height="120px" style="border-radius: 10%;">
-                    </button>
-                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Chocolate-roll<br> 109฿</p>
-                </div>
-                <div style="display: flex;">
-                    <button onclick ="" type="submit" style="border-radius: 10%; margin-top: 10%; margin-left: 15%;" > 
-                        <img src="/Pictures/category/dessert/chocolate-muffin.jpg" width="120px" height="120px" style="border-radius: 10%;">
-                    </button>
-                    <p style="color: white; padding-top: 10%; padding-left: 2%;">Chocolate-muffin<br> 99฿</p>
-                </div>
+                <form action="/desserts" method="post">
+                    <div style="display: flex;">
+
+                        <button onclick="" type="submit" name="menuID" value='donut' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                            <img src="/Pictures/category/dessert/donut.jpg" width="120px" height="120px"
+                                style="border-radius: 10%;">
+                        </button>
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Donut<br> 39฿</p>
+                    </div>
+                    <div style="display: flex;">
+                        <button onclick="" type="submit" name="menuID" value='croissant' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                            <img src="/Pictures/category/dessert/croissant.jpeg" width="120px" height="120px"
+                                style="border-radius: 10%;">
+                        </button>
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Croissant<br> 89฿</p>
+                    </div>
+                    <div style="display: flex;">
+                        <button onclick="" type="submit" name="menuID" value='chocolate-roll' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                            <img src="/Pictures/category/dessert/chocolate-roll.jpeg" width="120px" height="120px"
+                                style="border-radius: 10%;">
+                        </button>
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Chocolate-roll<br> 109฿</p>
+                    </div>
+                    <div style="display: flex;">
+                        <button onclick="" type="submit" name="menuID" value='chocolate-muffin' style="border-radius: 10%; margin-top: 10%; margin-left: 15%;">
+                            <img src="/Pictures/category/dessert/chocolate-muffin.jpg" width="120px" height="120px"
+                                style="border-radius: 10%;">
+                        </button>
+                        <p style="color: white; padding-top: 10%; padding-left: 2%;">Chocolate-muffin<br> 99฿</p>
+
+                    </div>
+                </form>
             </div>
         </section>
 
@@ -222,9 +277,32 @@
                     document.getElementById("mySidenav4").style.width = "0";
                 }
             }
-            function addMenu(){
+            var modal = document.getElementById("myModal2");
 
-            }
-        </script>
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+    modal.style.display = "block";
+    console.log("open modal")
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+            </script>
 
         <%- include('partials/footer'); %>

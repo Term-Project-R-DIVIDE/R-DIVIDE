@@ -40,7 +40,7 @@ const menuSchema = {
 const User = mongoose.model("User", userSchema);
 const Table = mongoose.model("Table", tableSchema);
 const Maindish = mongoose.model("maindish", menuSchema);
-const Appetizer = mongoose.model("appitizer", menuSchema);
+const Appetizer = mongoose.model("appetizer", menuSchema);
 const Drink = mongoose.model("drink", menuSchema);
 const Dessert = mongoose.model("dessert", menuSchema);
 var Admin = { username: 'admin', password: 'password' }
@@ -49,7 +49,7 @@ User.insertMany(Admin);
 const maindish = [
   {
       id: 0,
-      name: "seafood-pizza",
+      name: "seafood-cocktail-pizza",
       prize: "199",
       image: "/Pictures/category/main-dish/seafood-cocktail-pizza.jpg",
       request: '',
@@ -205,6 +205,17 @@ for (i = 0; i < maindish.length; i++) {
   Drink.insertMany(drink[i]);
   Dessert.insertMany(dessert[i]);
 }
+var table1 = { tableNumber: "1", order: [''] }
+var table2 = { tableNumber: "2", order: [''] }
+var table3 = { tableNumber: "3", order: [''] }
+var table4 = { tableNumber: "4", order: [''] }
+var table5 = { tableNumber: "5", order: [''] }
+ 
+Table.insertMany(table1)
+Table.insertMany(table2)
+Table.insertMany(table3)
+Table.insertMany(table4)
+Table.insertMany(table5)
 
 app.get('/', function (req, res) {
   res.render('home', {
@@ -270,6 +281,107 @@ app.post("/login", function (req, res) {
     })
   })
 })
+app.post('/maindish', function (req, res) {
+  var addMenuName = (req.body.menuID)
+  var requestMes = (req.body.requestMessage)
+
+  MongoClient.connect(url, function (err, db) {
+      var query = { name: addMenuName };
+      var dataBase = db.db('r-divide');
+      dataBase.collection('maindishes').find(query).toArray(function (err, result) {
+
+          if (err) {
+              console.log(err)
+          } else {
+              dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+                  
+                  newOrder = eee[0].order;
+                  newOrder.push(result[0]);
+                  dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: newOrder })
+              })
+
+              
+          }
+      })
+  })
+  res.redirect('/category')
+})              
+app.post('/appetizer', function (req, res) {
+  var addMenuName = (req.body.menuID)
+  var requestMes = (req.body.requestMessage)
+
+  MongoClient.connect(url, function (err, db) {
+      var query = { name: addMenuName };
+      var dataBase = db.db('r-divide');
+      dataBase.collection('appetizers').find(query).toArray(function (err, result) {
+
+          if (err) {
+              console.log(err)
+          } else {
+              dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+                  
+                  newOrder = eee[0].order;
+                  newOrder.push(result[0]);
+                  dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: newOrder })
+              })
+
+              
+          }
+      })
+  })
+  res.redirect('/category')
+})  
+app.post('/drinks', function (req, res) {
+  var addMenuName = (req.body.menuID)
+  var requestMes = (req.body.requestMessage)
+
+  MongoClient.connect(url, function (err, db) {
+      var query = { name: addMenuName };
+      var dataBase = db.db('r-divide');
+      dataBase.collection('drinks').find(query).toArray(function (err, result) {
+
+          if (err) {
+              console.log(err)
+          } else {
+              dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+                  
+                  newOrder = eee[0].order;
+                  newOrder.push(result[0]);
+                  dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: newOrder })
+              })
+
+              
+          }
+      })
+  })
+  res.redirect('/category')
+})               
+app.post('/desserts', function (req, res) {
+  var addMenuName = (req.body.menuID)
+  console.log(addMenuName)
+  var requestMes = (req.body.requestMessage)
+
+  MongoClient.connect(url, function (err, db) {
+      var query = { name: addMenuName };
+      var dataBase = db.db('r-divide');
+      dataBase.collection('desserts').find(query).toArray(function (err, result) {
+
+          if (err) {
+              console.log(err)
+          } else {
+              dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+                  
+                  newOrder = eee[0].order;
+                  newOrder.push(result[0]);
+                  dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: newOrder })
+              })
+
+              
+          }
+      })
+  })
+  res.redirect('/category')
+})
 app.get('/orders', function (req, res) {
   MongoClient.connect(url, function (err, db) {
     var dataBase = db.db('r-divide');
@@ -283,6 +395,98 @@ app.get('/orders', function (req, res) {
 
 
 });
+app.post('/cancel', function (req, res) {
+  var cancelMenu = (req.body.cancelOrder)
+  console.log(cancelMenu)
+  MongoClient.connect(url, function (err, db) {
+      var dataBase = db.db('r-divide');
+      dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+
+          var se = eee[0].order.filter(obj => {
+              return obj.name === cancelMenu
+          })
+          console.log(se)
+
+          for (var i = 0; i < eee[0].order.length; i++) {
+              if (JSON.stringify(eee[0].order[i]) === JSON.stringify(se[0])) {
+                  if (eee[0].order[i].status === '' || eee[0].order[i].status === 'inqueue') {
+                      eee[0].order.splice(i, 1);
+                  } else {
+
+                  } 
+              }
+          }
+          var newOrderAfterDelete = eee[0].order
+          dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: newOrderAfterDelete })
+      })
+  })
+  res.redirect('/category')
+
+
+})
+app.post('/confirm', function (req, res) {
+
+  MongoClient.connect(url, function (err, db) {
+      var dataBase = db.db('r-divide');
+      dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+
+          for (var i = 0; i < eee[0].order.length; i++) {
+              if (eee[0].order[i].status === '') {
+                  eee[0].order[i].status = 'inqueue';
+              }
+          }
+          var completeNewOrder = eee[0].order;
+          //  var completeNewOrder = eee[0].order.push(newOrdered)
+          console.log(completeNewOrder)
+          //  eee[0].order.splice(i, 1);
+          dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: completeNewOrder })
+
+      })
+  })
+  res.redirect('/category')
+}) 
+
+app.post('/checkbill', function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+      var dataBase = db.db('r-divide');
+      dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+
+          dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: [''] })
+      })
+  })
+  res.redirect('/Checkout')
+})
+
+app.post('/changeStatus', function (req, res) {
+  var statusMess = (req.body.statusMessage)
+  var changedOrder = (req.body.changedStatusOrder)
+
+  MongoClient.connect(url, function (err, db) {
+      var dataBase = db.db('r-divide');
+      dataBase.collection('tables').find({ tableNumber: selectedTable }).toArray(function (err, eee) {
+
+          var se = eee[0].order.filter(obj => {
+              return obj.name === changedOrder
+          })
+          //  console.log(se)
+          for (var i = 0; i < eee[0].order.length; i++) {
+              if (JSON.stringify(eee[0].order[i]) === JSON.stringify(se[0])) {
+                  // var newOrdered = eee[0].order[i];
+                  // newOrdered.status = statusMess
+                  eee[0].order[i].status = statusMess;
+                  //  console.log(newOrdered)
+              }
+          }
+          var completeNewOrder = eee[0].order;
+          //  var completeNewOrder = eee[0].order.push(newOrdered)
+          console.log(completeNewOrder)
+          //  eee[0].order.splice(i, 1);
+          dataBase.collection('tables').findOneAndReplace({ tableNumber: selectedTable }, { tableNumber: selectedTable, order: completeNewOrder })
+
+      })
+  })
+  res.redirect('/orders')
+})
 
 
 app.post('/refresh', function (req, res) {
