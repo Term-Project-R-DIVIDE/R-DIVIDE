@@ -38,9 +38,9 @@ jobs:
       -
         name: Prepare docker-compose run
         run: |
-              mkdir project-dev2.1
-              cp docker-compose.yml project-dev2.1/docker-compose.yml
-              cd project-dev2.1
+              mkdir project-dev3
+              cp docker-compose.yml project-dev3/docker-compose.yml
+              cd project-dev3
               docker-compose -H ${{secrets.HOST_SERVER}} down
               docker-compose -H ${{secrets.HOST_SERVER}} pull
               docker-compose -H ${{secrets.HOST_SERVER}} up -d
