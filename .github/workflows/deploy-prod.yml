@@ -1,4 +1,4 @@
-name: Deploy app on main
+name: Deploy app on prod
 'on':
   push:
     branches:
@@ -39,7 +39,7 @@ jobs:
         name: Prepare docker-compose run
         run: |
               mkdir project-dev3
-              cp docker-compose.yml project-dev3/docker-compose.yml
+              cp docker-compose-prod.yml project-dev3/docker-compose.yml
               cd project-dev3
               docker-compose -H ${{secrets.HOST_SERVER}} down
               docker-compose -H ${{secrets.HOST_SERVER}} pull
