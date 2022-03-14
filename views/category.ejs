@@ -5,19 +5,23 @@
         <div class="split left">
             <div class="container" style="margin-left: 30px; color: white;">
                 <div>
-                    <h1>Category</h1>
+                    <h1>Category</h1><br><br>
                 </div>
 
             </div>
             <div class="container" style="margin-left: 30px;">
                 <div class="row">
                     <div class="col-12" style="display: flex; margin-bottom: 30px; margin-left: 30px;">
-                            <img style="border-radius: 10%;" src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg" width="200px" height="200px">
-                            <img style="margin-left: 30px; border-radius: 10%;" src="/Pictures/category/appetizer/salad-cate.jpg" width="200px" height="200px">
+                        <img onclick="openNav(1)" style="border-radius: 10%;" src="/Pictures/category/main-dish/seafood-cocktail-pizza.jpg"
+                            width="200px" height="200px">
+                        <img onclick="openNav(2)" style="margin-left: 30px; border-radius: 10%;"
+                            src="/Pictures/category/appetizer/salad-cate.jpg" width="200px" height="200px">
                     </div>
                     <div class="col-12" style="display: flex; margin-left: 30px;">
-                            <img style="border-radius: 10%;" src="/Pictures/category/drink/cola.jpg" width="200px" height="200px">
-                            <img style="margin-left: 30px; border-radius: 10%;" src="/Pictures/category/dessert/donut-duo.jpg" width="200px" height="200px">
+                        <img onclick="openNav(3)" style="border-radius: 10%;" src="/Pictures/category/drink/cola.jpg" width="200px"
+                            height="200px">
+                        <img onclick="openNav(4)" style="margin-left: 30px; border-radius: 10%;"
+                            src="/Pictures/category/dessert/donut-duo.jpg" width="200px" height="200px">
                     </div>
                 </div>
             </div>
@@ -147,7 +151,6 @@
         </section>
         </div>
         <script>
-            
             /* Set the width of the side navigation to 250px */
             function openNav(num) {
                 if(num==1){
@@ -183,4 +186,4 @@
             }
         </script>
 
-<%- include('partials/footer'); %>
+        <%- include('partials/footer'); %>
