@@ -13,7 +13,9 @@ head{
   margin:auto;
 }
 .fa{
-  color: white;
+  color: rgb(255, 255, 255);
+  background-color: #14181f;
+  ;
 }
 .black{
   background-color: black;

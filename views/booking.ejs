@@ -1,6 +1,6 @@
 <%-include('partials/header');%>
 
-<title>Booking</title>
+    <title>Booking</title>
 
     <body>
 
@@ -14,32 +14,38 @@
                     </div>
                     <p class='msg'>Please select a table </p><br>
                     <div class='form'>
-                        
-                        <select name="cars" id="cars">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                          </select><br><br>
 
-                          <p class='msg'>Please select a time </p><br>
-                          <div class='form'>
-                              
-                              <select name="cars" id="cars">
-                                  <option value="1">11.00</option>
-                                  <option value="2">12.00</option>
-                                  <option value="3">13.00</option>
-                                  <option value="4">14.00</option>
-                                </select><br><br>
+                        <select name="table" class="selectVal" id="select-table">
+                            <option id="1" value="1" >1</option>
+                            <option id="2" value="2">2</option>
+                            <option id="3" value="3">3</option>
+                            <option id="4" value="4">4</option>
+                            <option id="5" value="5">5</option>
+                            <option id="6" value="6">6</option>
+                        </select><br><br><br><br><br><br>
 
-                        <a href="category" class='btn-book' id='do-book'>SUBMIT</a><br><br><br><br>
-                        
-                            
+
+                        <form action="/table" method="post">
+                        <button type="submit" class='btn-book' id='do-book' name="tableNB" value="">SUBMIT</a><br><br><br><br>
+                        </form>
+
                     </div>
                 </center>
             </section>
         </div>
+        <script>
+            let but = document.getElementById('do-book')
+            but.addEventListener('click', function (event) {
+                var button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                var recipient = document.getElementById('select-table').value
+                var subBtn = document.getElementById('do-book')
+                subBtn.value = recipient;
 
+            })
+
+
+
+
+        </script>
     </body>
-
-    
