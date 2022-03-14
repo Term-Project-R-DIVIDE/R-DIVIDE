@@ -8,13 +8,13 @@ const databaseName = "r-divide";
 
 var posts = [];
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/';
+var url = 'mongodb+srv://project:project@cluster0.60rf1.mongodb.net/test';
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect(`mongodb://localhost:27017/${databaseName}`, {
+mongoose.connect(`mongodb+srv://project:project@cluster0.60rf1.mongodb.net/${databaseName}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -44,7 +44,7 @@ const Appetizer = mongoose.model("appetizer", menuSchema);
 const Drink = mongoose.model("drink", menuSchema);
 const Dessert = mongoose.model("dessert", menuSchema);
 var Admin = { username: 'admin', password: 'password' }
-User.insertMany(Admin);
+//User.insertMany(Admin);
 
 const maindish = [
   {
@@ -199,23 +199,23 @@ const dessert = [
       status: '',
   }
 ]
-for (i = 0; i < maindish.length; i++) {
-  Maindish.insertMany(maindish[i]);
-  Appetizer.insertMany(appetizer[i]);
-  Drink.insertMany(drink[i]);
-  Dessert.insertMany(dessert[i]);
-}
+// for (i = 0; i < maindish.length; i++) {
+//   Maindish.insertMany(maindish[i]);
+//   Appetizer.insertMany(appetizer[i]);
+//   Drink.insertMany(drink[i]);
+//   Dessert.insertMany(dessert[i]);
+// }
 var table1 = { tableNumber: "1", order: [''] }
 var table2 = { tableNumber: "2", order: [''] }
 var table3 = { tableNumber: "3", order: [''] }
 var table4 = { tableNumber: "4", order: [''] }
 var table5 = { tableNumber: "5", order: [''] }
  
-Table.insertMany(table1)
-Table.insertMany(table2)
-Table.insertMany(table3)
-Table.insertMany(table4)
-Table.insertMany(table5)
+// Table.insertMany(table1)
+// Table.insertMany(table2)
+// Table.insertMany(table3)
+// Table.insertMany(table4)
+// Table.insertMany(table5)
 
 app.get('/', function (req, res) {
   res.render('home', {
